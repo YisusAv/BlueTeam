@@ -6,7 +6,7 @@ public class Mandado{
 	public static void main(String[] args){
 
 		
-		ListaMandado Mand1 = new ListaMandado();
+		Mandado Mand1 = new Mandado();
 		
 		int menuSelect;
 		Scanner insert = new Scanner(System.in);
@@ -17,7 +17,7 @@ public class Mandado{
 		int mandado=0;
 		String nameL1;
         String[]list1;
-		String[] listMand1 = list1;
+		//String[]listMand1 = list1;
 		
 		
 		
