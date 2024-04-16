@@ -101,10 +101,48 @@ public class ListaManager {
                     && nuevaPosicion >= 1 && nuevaPosicion <= listaSeleccionada.getNumElementos()) {
                
 
-			   String elemento = listaSeleccionada.getElemento(indiceElemento - 1);
-                listaSeleccionada.setElemento(indiceElemento - 1, null); // Este null se debe de cambiar por el elemento del índice seleccionado
+               //SE NECESITABA CREAR 2 "LISTAS" E INVOCAR LOS 2 METODOS CON LOS INDICES A CAMBIAR
+			   String elemento = listaSeleccionada.getElemento(indiceElemento-1);
+			   String nuevoElemento = listaSeleccionada.getElemento(nuevaPosicion-1);
+                listaSeleccionada.setElemento(nuevaPosicion-1, elemento ); // solo se cambio el "null" por el elemento que queremos cambiar
+				listaSeleccionada.setElemento(indiceElemento-1, nuevoElemento );
 				
                 if (indiceElemento < nuevaPosicion) {
+					
+					for (int i=0; i<listaSeleccionada.getNumElementos();i++){
+
+						if(i<indiceElemento&& i<nuevaPosicion){
+                        String temp = listaSeleccionada.getElemento(i);
+                       
+                        elemento = temp;
+						nuevoElemento = temp;
+						
+						}else if(i==indiceElemento || i== nuevaPosicion){
+                        String temp = listaSeleccionada.getElemento(i);
+                        
+                        elemento = temp;
+						nuevoElemento = temp;							
+							
+						}else if(i>indiceElemento||i>nuevaPosicion){
+                        String temp = listaSeleccionada.getElemento(i);
+                        
+                        elemento = temp;
+						nuevoElemento = temp;							
+							
+						}else{	
+                        String temp = listaSeleccionada.getElemento(i);
+                        
+                        elemento = temp;
+						nuevoElemento = temp;						
+							
+						}	
+						
+					}
+				}
+				     /*  ESTAS condiciones solo recorren un lugar en direccion al nuevo lugar, 
+					 desplazando todos los elementos desde el "elegido" hasta la "nueva posición"  */
+					 
+                /*if (indiceElemento < nuevaPosicion) {
                     for (int i = indiceElemento; i < nuevaPosicion; i++) {
                         String temp = listaSeleccionada.getElemento(i);
                         listaSeleccionada.setElemento(i, elemento);
@@ -116,7 +154,8 @@ public class ListaManager {
                         listaSeleccionada.setElemento(i, elemento);
                         elemento = temp; // temp es porque es una variable que se usa de manera "temporal"
                     }
-                }
+                }*/
+				
             } else {
                 System.out.println("Índices inválidos. No se realizó ningún cambio.");
             }
