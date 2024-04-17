@@ -107,38 +107,6 @@ public class ListaManager {
                 listaSeleccionada.setElemento(nuevaPosicion-1, elemento ); // solo se cambio el "null" por el elemento que queremos cambiar
 				listaSeleccionada.setElemento(indiceElemento-1, nuevoElemento );
 				
-                if (indiceElemento < nuevaPosicion) {
-					
-					for (int i=0; i<listaSeleccionada.getNumElementos();i++){
-
-						if(i<indiceElemento&& i<nuevaPosicion){
-                        String temp = listaSeleccionada.getElemento(i);
-                       
-                        elemento = temp;
-						nuevoElemento = temp;
-						
-						}else if(i==indiceElemento || i== nuevaPosicion){
-                        String temp = listaSeleccionada.getElemento(i);
-                        
-                        elemento = temp;
-						nuevoElemento = temp;							
-							
-						}else if(i>indiceElemento||i>nuevaPosicion){
-                        String temp = listaSeleccionada.getElemento(i);
-                        
-                        elemento = temp;
-						nuevoElemento = temp;							
-							
-						}else{	
-                        String temp = listaSeleccionada.getElemento(i);
-                        
-                        elemento = temp;
-						nuevoElemento = temp;						
-							
-						}	
-						
-					}
-				}
 				     /*  ESTAS condiciones solo recorren un lugar en direccion al nuevo lugar, 
 					 desplazando todos los elementos desde el "elegido" hasta la "nueva posición"  */
 					 
