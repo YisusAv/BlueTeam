@@ -80,15 +80,16 @@ public class ListaManager {
         }
 	
 	
-	
-
+	int opcion;//pueblo
+    do {//pueblo
     System.out.println("\n¿Qué acción desea realizar en la lista " + listaSeleccionada.getNombre() + "?");
     System.out.println("1. Cambiar de lugar un elemento");
     System.out.println("2. Actualizar el nombre de un elemento");
     System.out.println("3. Borrar un elemento");
     System.out.println("4. Agregar un nuevo elemento");
+	System.out.println("5. Regresar al menu principal"); //pueblo
     System.out.print("Seleccione una opción: ");
-    int opcion = scanner.nextInt();
+    opcion = scanner.nextInt();
 
     switch (opcion) {
         case 1:
@@ -197,10 +198,18 @@ public class ListaManager {
 			}
 			
 			break;
+		
+		//se debe de agregar una opcion que nos regrese al menu inicial (pueblo)
+		case 5:
+            System.out.println("Regresando al menu principal....."); //pueblo
+					
+            break;	
+			
         default:
             System.out.println("Opción no válida. No se realizó ninguna acción.");
             break;
 		}
+	  } while (opcion != 5);
 	}
 }
    
