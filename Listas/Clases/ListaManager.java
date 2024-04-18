@@ -159,18 +159,25 @@ public class ListaManager {
             break;
         case 3:
             // Borrar un elemento
-            System.out.print("Ingrese el índice del elemento que desea borrar: ");
-            int indiceBorrar = scanner.nextInt();
-            if (indiceBorrar >= 1 && indiceBorrar <= listaSeleccionada.getNumElementos()) {
-               /* for (int i = indiceBorrar - 1; i < listaSeleccionada.getNumElementos()-1; i++) {
-                    listaSeleccionada.setElemento(i, listaSeleccionada.getElemento(i));
-                }*/
-
-                /*listaSeleccionada.setElemento(listaSeleccionada.getNumElementos()-1, null);*/
-				listaSeleccionada.setElemento(indiceBorrar-1, null); // Modificación YisusAvila estaba mal lo comentado arriba de esta línea
-            } else {
-                System.out.println("Índice inválido. No se realizó ninguna eliminación.");
-            }
+			System.out.print("Ingrese el índice del elemento que desea borrar: ");
+			//el dato ingresado lo guarda en la variable indiceBorrar
+			int indiceBorrar = scanner.nextInt();
+			//verifica el rango que va desde 1 hasta la cantidad actual de elementos
+			if (indiceBorrar >= 1 && indiceBorrar <= listaSeleccionada.getNumElementos()) {
+				//bucle que comienza el indice de borrar hasta el final de la lista y luego mueve todos los elementos
+				//un lugar atras sobrescribiendo el elemento en la posicion actual con el elemento siguiente
+				for (int i = indiceBorrar; i < listaSeleccionada.getNumElementos(); i++) {
+					listaSeleccionada.setElemento(i - 1, listaSeleccionada.getElemento(i));
+				}
+				//establece el [ultimo elemento de la lista como null, ahora se encuentra en una posicion duplicada
+				listaSeleccionada.setElemento(listaSeleccionada.getNumElementos() - 1, null);
+				//elimina el ultimo elemento de la lista que ahora es null utilizando remove de arraylist
+				listaSeleccionada.getElementos().remove(listaSeleccionada.getNumElementos() - 1);
+				System.out.println("Elemento eliminado exitosamente.");
+			} else {
+				//en caso de colocar un # de indice no valido
+				System.out.println("Índice inválido. No se realizó ninguna eliminación.");
+			}
 			
 			// Para impresión cada que hay un cambio YisusAvila (Se puede meter en un método)
 			System.out.println("\nLa lista nueva de " + listaSeleccionada.getNombre() + " es:");
@@ -181,15 +188,21 @@ public class ListaManager {
             break;
         case 4:
             // Agregar un nuevo elemento
-            System.out.print("Ingrese el nuevo elemento: ");
-            String nuevoElemento = scanner.next();
-            String[] nuevosElementos = new String[listaSeleccionada.getNumElementos() + 1];
-            for (int i = 0; i < listaSeleccionada.getNumElementos(); i++) {
-                nuevosElementos[i] = listaSeleccionada.getElemento(i);
-            }
-            nuevosElementos[nuevosElementos.length - 1] = nuevoElemento;
-            //listaSeleccionada.setElementos(nuevosElementos);
-			listaSeleccionada.setElemento(nuevosElementos.length - 1, nuevoElemento);
+			System.out.print("Seleccione el índice de la lista donde desea agregar el nuevo elemento: ");
+			//el dato ingresado lo guarda de la variable inddice agregar
+			int indiceAgregar = scanner.nextInt();
+			//verifica el rango que va desde 1 hasta la cantidad actual de elementos +1
+			if (indiceAgregar >= 1 && indiceAgregar <= listaSeleccionada.getNumElementos() + 1) {
+			System.out.print("Ingrese el nuevo elemento: ");
+			//el dato ingresado lo guarda en la variable nuevoElemento
+			String nuevoElemento = scanner.next();
+			//agrega el nuevo elemento en el espacio seleccionado de la lista. Se le resta 1 al indice
+			listaSeleccionada.getElementos().add(indiceAgregar - 1, nuevoElemento);
+			System.out.println("Elemento agregado exitosamente.");
+			} else {
+				//en caso de colocar un # de indice no valido
+			System.out.println("Índice inválido. No se realizó ninguna adición.");
+			}
             
 			// Para impresión cada que hay un cambio YisusAvila
 			System.out.println("\nLa lista nueva de " + listaSeleccionada.getNombre() + " es:");
@@ -201,8 +214,7 @@ public class ListaManager {
 		
 		//se debe de agregar una opcion que nos regrese al menu inicial (pueblo)
 		case 5:
-            System.out.println("Regresando al menu principal....."); //pueblo
-					
+            System.out.println("Regresando al menu principal....."); //pueblo		
             break;	
 			
         default:

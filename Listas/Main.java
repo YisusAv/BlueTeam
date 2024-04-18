@@ -1,9 +1,8 @@
 import Clases.Lista;
 import Clases.ListaManager;
-
 import java.util.Scanner;
 
-//entiendo yo que aqui usamos esto para guardar en memoria
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
